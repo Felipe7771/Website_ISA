@@ -1,0 +1,28 @@
+___________________________________________________________________________
+
+REQUERIMENTOS SOBRE O TRATAMENTO DAS BIBLIOTECAS
+___________________________________________________________________________
+
+
+===========================================================================
+
+TODO O INÍCIO DE CÓDIGO QUE VOCÊ FOR RODAR,
+INICIE O AMBIENTE VIRTUAL:
+
+source info/ia_VERSOES/bin/activate
+
+===========================================================================
+
+PARA INICIALIZAR TODAS AS BIBLIOTECAS QUE ESTÃO EM AMARELO NO CÓDIGO
+
+pip install -r requirements.txt 
+
+===========================================================================
+
+TODA BIBLIOTECA NOVA QUE VOCÊ FOR INSERIR NESSE CÓDIGO,
+SALVE-A NO REGISTRO COMO AS OUTRAS:
+
+pip freeze > requirements.txt
+
+===========================================================================
+

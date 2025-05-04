@@ -1,0 +1,220 @@
+﻿Escola Padre Anchieta de Ensino
+Curso Ensino Médio Integrado Técnico em Informática
+
+
+3o Info B
+
+
+
+
+                                                        
+
+
+
+
+Relatório do Desenvolvimento da Programação do NIK
+TCC
+
+
+
+
+
+
+Descrito por:
+Felipe Capelletti Andréa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Jundiaí 2024
+GITHUB: https://github.com/GuilhermeLuizSimon/PROJETO-NIK
+
+
+Módulo de pesquisa usada no Relatório:
+Branch "Felipe" - Módulo 1.0.41
+
+
+A linha de programação se estrutura sobre a criação de um servidor local no qual é inicializado pelo arquivo principal server.py, responsável pela inicialização prévia sobre a alocação da circulação dos arquivos de áudio entre o servidor e o esp32.
+
+
+server.py
+# RESPONSÁVEL PELO PROCESSO DE TRANSMISSÃO DE DADOS
+# é o primeiro a ser ligado
+
+
+import http.server
+import socketserver
+import webbrowser
+import os
+import pasteLocal as pl
+import controller as con
+
+
+
+
+# Define a porta que o servidor vai usar
+PORT = 8000
+
+
+# Define o diretório que será servido
+
+
+# Obtém o caminho completo do diretório atual
+caminho_atual = pl.paste()
+
+
+DIRECTORY = caminho_atual
+
+
+# Muda para o diretório especificado
+os.chdir(DIRECTORY)
+
+
+# Cria o handler para servir os arquivos
+Handler = http.server.SimpleHTTPRequestHandler
+
+
+# Inicia o servidor
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print(f"Servidor iniciado na porta {PORT}")
+    print(f"Acesse em: http://localhost:{PORT}")
+   
+    # Abre o navegador automaticamente
+    webbrowser.open_new_tab(f"http://localhost:{PORT}")
+   
+    # Mantém o servidor rodando
+    print("Seridor Rodadndo!")
+    con.checkFileAudio()
+    httpd.serve_forever()
+
+
+Em funcionamento pleno, foi estruturado o diretório do servidor em divisões de funções sobre a gestão dos arquivos e a IA, na qual também foi colocada junta a estrutura do servidor
+
+
+Pasta "Commands": responsável pelas funções da IA em devolução de respostas a partir do texto do comando dito pelo cliente;
+
+
+Pasta "Esp32": responsável pelo armazenamento da resposta final vinda da IA que seja mandada ao esp32 e tocada no auto-falante (apesar da existência do arquivo gravacaoVoz.py até então, ele será realocado no componente esp32);
+
+
+Pasta "InUse": responsável pelo armazenamento do áudio que será analisado pelo código;
+
+
+Pasta "SongSaver": responsável pelo armazenamento dos áudios vindos do esp32.
+
+
+Após a inicialização do servidor, a lógica geral sobre a gestão dos arquivos de audio que até então apresenta em contrução do código se baseia em uma verificação contínua da chegada de algum áudio na pasta "SongSaver", após a chegada, o código vai realocar o aúdio recebido para a pasta "InUse", a partir disso, o áudio será transformado em texto a partir do código do arquivo audioConverter.py da função AudiotoText
+
+
+Código Atual da função dentro do AudioConverter.py:
+# função de audio para texto
+def AudiotoText(caminho_audio):
+    audio = AudioSegment.from_file(caminho_audio)
+    audio.export("audio.wav", format="wav") # Converter para WAV
+
+
+    #Inicializar o reconhecedor
+    reconhecedor = sr.Recognizer()
+
+
+    #Abrir o arquivo de áudio
+    with sr.AudioFile("audio.wav") as fonte:
+        audio_gravado = reconhecedor.record(fonte)  # Ler o áudio
+
+
+    #Tentar reconhecer o áudio
+    try:
+        texto = reconhecedor.recognize_google(audio_gravado, language='pt-BR')
+        texto = texto.lower()
+        print("Texto reconhecido:", texto)
+       
+        # VERIFICAÇÃO SE O NIK FOI ATIVO (mover para um arquivo independente depois)
+        #variável para indentificar se NIK foi chamado
+        nik_active = False
+        ativaction_words = ['niq','nique','nike','nik','nic','nick','nyc','neek','nikke','nyk','nyq','nyque'
+                            'nyke','nykke','nyck','knick','nicke']
+       
+        for nik in ativaction_words:
+            if nik in texto:
+                nik_active = True
+                break
+       
+        if nik_active:
+            #nik foi ativado
+            #terminar código depois
+            print("a")
+       
+        else:
+            #nik não foi ativado
+            #terminar código depois
+            print("a")
+       
+    except sr.UnknownValueError:
+        print("O Google Speech Recognition não conseguiu entender o áudio")
+    except sr.RequestError as e:
+        print(f"Erro ao solicitar resultados do serviço de reconhecimento de fala: {e}")
+
+
+Seguindo a lógica, será analisado se a palavra de ativação NIK foi dito durante o texto, atualmente, se o texto descrito contém a palavra que está dentro da lista activation_words (a variedade se baseia em diversas formas na qual a transformação do audio para texto possa descrever a palavra NIK)
+
+
+Em Continuo, caso o texto não contenha a palavra de ativação, o áudio em "InUse" será apagado e a gestão voltará a aguardar novos áudios que chegam na pasta "SongSaver". Caso o texto possua NIK, a lógica mandará o texto para uma função dentro da pasta "Commands" no qual será avaliada para qual funcionalidade será desenvolvida baseada no comando do texto:
+
+
+ Texto contendo pesquisa: arquivo AI.py será ativada para buscar a resposta via API do Ollama (ATUALMENTE EM DESENVOLVIMENTO)
+
+
+ Texto contendo horário/dia ...: arquivo Hour.py será ativada para busar horário, dia, etc baseado na informação da máquina em uso (COLETA DE DADOS FOI TESTADA E APRESENTA-SE FUNCIONAVEL)
+
+
+ Texto contendo notícias ...: arquivo News.py será ativada para busar as notícias mais recentes pegas pela API do Newsapi (COLETA DE DADOS FOI TESTADA E APRESENTA-SE FUNCIONAVEL)
+
+
+ Texto contendo clima ...: arquivo Weather.py será ativada para busar o clima de São Paulo pegas pela API do OpenWeather (COLETA DE DADOS FOI TESTADA E APRESENTA-SE FUNCIONAVEL)
+
+
+Em todas as funcionalidades, será retornado uma resposta em texto que será transformada em áudio pela função TexttoAudio dentro do arquivo AudioConverter.py e salvo na pasta "Esp32" no qual finaliza o processamento desta resolução de comando, em que agora o áudio salvo na pasta ficará aguardando o componente esp32 coletá-la para tocar no auto-falante e consequentemente excluída do servidor.
+
+
+Código Atual da função dentro do AudioConverter.py 
+(A FUNÇÃO A SEGUIR AINDA DEVERÁ PASSAR NO PROCESSO DE TESTES DE FUNCIONAMENTO BASEADO NA LÓGICA):
+def TexttoAudio(text):
+    #tranformar audio em texto
+    #Inicializa o mecanismo de conversão de texto em fala
+    engine = pyttsx3.init()
+
+
+    #Define a taxa de fala (opcional)
+    engine.setProperty('rate', 150)  # Aumente ou diminua a taxa conforme necessário
+
+
+    #Define o volume (opcional)
+    engine.setProperty('volume', 1)  # Volume de 0.0 a 1.0
+
+
+    #Define a voz (opcional)
+    voices = engine.getProperty('voices')
+    #Seleciona a voz masculina (geralmente a primeira voz é masculina)
+    engine.setProperty('voice', voices[0].id)
+
+
+    #Converte o texto em fala
+    engine.say(text)
