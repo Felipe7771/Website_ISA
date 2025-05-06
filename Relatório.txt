@@ -22,3 +22,9 @@ arquivo  php: "php_controller" (arquivo vindo do projeto NIK)
 arquivo texto: "LibrarysTratament", "requirements" (todos os arquivos vindos do projeto NIK)
 }
 
+06/05 - Felipe:
+
+Criado a Pasta "php_functs" para arquivos php a qual não são diretamente telas, mas apresentam funcionalidades ao processo
+Adicionado um arquivo php "button_login.php" que checa se o usuário já foi logado, inicialmente ele retorna true ou falso, 
+mais para frente terá a função real de devolver também o design do botão dependendo do resultado
+
