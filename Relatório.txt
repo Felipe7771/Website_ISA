@@ -1,0 +1,24 @@
+RELATÓRIO ISA - TCC - 3o Info B
+
+Felipe C. A.
+Miguel G. S.
+Bruno G. L.
+Guilherme L. S.
+Manuela S. P.
+
+04/05 - Felipe:
+
+Criado pasta "ArqNIK", contendo todos os arquivos anteriores do projeto NIK da vers�o mais recente (1.0.61) do brach TestArea;
+
+Criado pasta "ISA" contendo:
+5 arquivos de tela (about.php, account.php, chat.php, index.php e login.php);
+pasta "Js" para arquivos de javascript;
+pasta "img" para imagens;
+pasta "css" para arquivos de estilo css;
+pasta "controller", contendo dentro: {
+pastas: "Commands", "Error_case", "InUse", "SongSaver" (todas as pastas vindas do projeto NIK)
+arquivo python: "audioConverter", "checkNik", "controller","pasteLocal" (todos os arquivos vindos do projeto NIK)
+arquivo  php: "php_controller" (arquivo vindo do projeto NIK)
+arquivo texto: "LibrarysTratament", "requirements" (todos os arquivos vindos do projeto NIK)
+}
+
