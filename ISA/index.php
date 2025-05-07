@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISA</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" href="img\icon_nav.png">
   <link rel="stylesheet" href="css\style_home.css">
 </head>
 <body>
