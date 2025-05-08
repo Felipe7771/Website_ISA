@@ -29,6 +29,12 @@
     vertical-align: middle; 
     padding: 1px;
     }
+    
+    .input {
+      padding: 15px 5%;
+      font-size: 20px;
+      margin: 10px;
+    }
 
     .icon-style:hover {
     vertical-align: middle; 
@@ -46,7 +52,7 @@
       border: #98CEFF;
     }
 
-    .butdlogout{
+    .butlogout{
       background-color: #F23030;
       color: white;
       padding: 10px 20px;
@@ -68,31 +74,45 @@
       width: 100vw;
     }
 
-    .left-panel {
+    .black-panel {
       flex: 1;
       background-color: #000;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       padding: 60px;
-      background-image: url('img/FUNDO_HOME.png');
+      background-image: url(' https://assets.onecompiler.app/43h62qpv7/43h62r9b5/FUNDO_HOME.png'); /*Imagem do Universão de decoração*/
       background-repeat: no-repeat;
       background-position: bottom right;
       background-size: contain;
+    }
+    
+    .group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
     }
 
     .h1 {
       font-size: 4.5rem;
       color: #008cff;
-      font-style: italic;
       margin-bottom: 20px;
-      margin-left: 20%;
     }
 
     .p {
       font-size: 20px;
       margin-bottom: 80px;
-      margin-left: 20%;
+    }
+    
+    .pfor {
+      font-size: 15px;
+      color: #008cff;
+      font-weight: 100;
+      font-family: 'Arial';
     }
 
     .button {
@@ -105,10 +125,26 @@
       transition: all 0.3s ease;
       text-transform: uppercase;
       width: fit-content;
-      margin-left: 20%;
     }
 
     .button:hover {
+      background-color: #000;
+      color: white;
+    }
+    
+    .buttonform {
+      background-color: #007bff;
+      color: white;
+      border: 3px solid #007bff;
+      padding: 15px 35%;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .buttonform:hover {
       background-color: #000;
       color: white;
     }
