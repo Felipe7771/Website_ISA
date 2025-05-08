@@ -1,4 +1,4 @@
-    * {
+   * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -21,18 +21,45 @@
     }
 
     header img {
-      height: 50px;
+      height: 300%;
     }
 
-    header .icon {
-      font-size: 20px;
-      cursor: pointer;
-      margin-left: 15px;
-      transition: transform 0.2s;
+    .icon-style {
+    font-size: 250%; 
+    vertical-align: middle; 
+    padding: 1px;
     }
 
-    header .icon:hover {
-      transform: scale(1.1);
+    .icon-style:hover {
+    vertical-align: middle; 
+    color: #007bff;
+    }
+
+    .butlog {
+      background-color: #98CEFF;
+      color: black;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      width: fit-content;
+      vertical-align: middle;
+      border: #98CEFF;
+    }
+
+    .butdlogout{
+      background-color: #F23030;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      width: fit-content;
+      vertical-align: middle;
+      border: #98CEFF;
+    }
+
+    .icon-log {
+    font-size: 130%; 
+    padding-right: 10px;
     }
 
     #mainContainer {
@@ -48,7 +75,7 @@
       flex-direction: column;
       justify-content: center;
       padding: 60px;
-      background-image: url('imagedec.png');
+      background-image: url('img/FUNDO_HOME.png');
       background-repeat: no-repeat;
       background-position: bottom right;
       background-size: contain;
@@ -71,7 +98,7 @@
     .button {
       background-color: #007bff;
       color: white;
-      border: 1px solid #007bff;
+      border: 3px solid #007bff;
       padding: 15px 30px;
       font-size: 12px;
       cursor: pointer;
@@ -81,7 +108,7 @@
       margin-left: 20%;
     }
 
-    .left-panel button:hover {
+    .button:hover {
       background-color: #000;
       color: white;
     }
@@ -114,7 +141,11 @@
       }
 
       .button {
-        font-size: 0.9rem;
-        padding: 10px 20px;
+        font-size: 1.1rem;
+        padding: 15px 25px;
+      }
+      
+      .right-panel {
+      border-top: 2px solid #007bff;
       }
     }
