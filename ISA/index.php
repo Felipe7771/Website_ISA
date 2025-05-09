@@ -1,3 +1,15 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include 'php_functs/button_login.php';
+
+# checagem se o usuário está logado
+$response = Check_login();
+
+# pegar formato do botão a partir da resposta do $response
+$buttom = Define_button_log($response);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,22 +23,28 @@
 </head>
 <body>
 
+<!-- HEADER padrão em todas as telas -->
   <header>
     <img src='img/logo_bar.png'> <!-- aqui é onde fica a logo -->
     <div>
-      <i class='bx bx-home-alt icon-style'></i>
-      <i class='bx bxs-group icon-style'></i>
-      <button class= "butlog"><i class='bx bx-user icon-log'></i>Login</button>
+      <a href="index.php"><i class='bx bx-home-alt icon-style'></i></a> <!-- Ir para o Home -->
+      <a href="about.php"><i class='bx bxs-group icon-style'></i></a> <!-- Ir para o Sobre -->
+
+      <?php echo $buttom; ?> <!-- Botão apartir do login do usuário -->
+      <!-- <a href=""><button class= "butlog"><i class='bx bx-user icon-log'></i>Login</button></a> -->
       
     </div>
   </header>
+<!-- fim o HEADER padrão -->
 
   <main id="mainContainer">
     <section class="black-panel">
       <div>
         <h1 class= "h1"><i>BEM VINDO</i></h1>
         <p class= "p">Tenha uma ótima experiência com nossa nova IA por interação de voz.</p>
-        <button class= "button">Converse com a ISA</button>
+        <!-- Ir para Chat ou Login -->
+        <a href="php_functs/go_to_Chat_or_Login.php"><button class= "button">Converse com a ISA</button></a> 
+
       </div>
     </section>
     <aside class="right-panel"></aside>

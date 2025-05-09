@@ -1,5 +1,4 @@
 <?php
-session_start();
 function Check_login(){
     # checagem se a variável IsLogin existe e é verdadeira
     if( isset($_SESSION['IsLogin']) ) {
@@ -26,12 +25,12 @@ function Define_button_log($is_login){
     if($is_login){
         # SIM, está logado
         # definir botão LOGOUT
-        return '<button class= "butlogout"><i class="bx bx-user icon-log"></i>Logout</button>';
+        return '<a href="logout.php"><button class= "butlogout"><i class="bx bx-user icon-log"></i>Logout</button></a>';
     } else {
 
         # NÃO, está desconectado
         # definir botão LOGIN
-        return '<button class= "butlog"><i class="bx bx-user icon-log"></i>Login</button>';
+        return '<a href="../login.php"><button class= "butlog"><i class="bx bx-user icon-log"></i>Login</button></a>';
     }
 }
 ?>

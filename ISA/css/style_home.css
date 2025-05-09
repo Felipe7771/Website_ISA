@@ -19,6 +19,18 @@
       padding: 10px 20px;
       height: 75px;
     }
+a {
+    color: inherit;            /* Herda a cor do elemento pai */
+    text-decoration: none;     /* Remove sublinhado */
+}
+
+a:hover,
+a:focus,
+a:visited,
+a:active {
+    color: inherit;            /* Garante que não mude em nenhum estado */
+    text-decoration: none;     /* Opcional: mantém sem sublinhado */
+}
 
     header img {
       height: 300%;
@@ -44,12 +56,24 @@
     .butlog {
       background-color: #98CEFF;
       color: black;
+      border-width: 30px;
       padding: 10px 20px;
       font-size: 18px;
       transition: all 0.3s ease;
       width: fit-content;
       vertical-align: middle;
-      border: #98CEFF;
+      border: 1px solid #98CEFF;
+    }
+
+    .butlog:hover {
+      background-color: #1a1d34;
+      color: #98CEFF;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      width: fit-content;
+      vertical-align: middle;
+      border: 1px solid #98CEFF;
     }
 
     .butlogout{
@@ -60,7 +84,18 @@
       transition: all 0.3s ease;
       width: fit-content;
       vertical-align: middle;
-      border: #98CEFF;
+      border: 1px solid #F23030;
+    }
+
+    .butlogout:hover {
+      background-color: #1a1d34;
+      color: #F23030;
+      padding: 10px 20px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      width: fit-content;
+      vertical-align: middle;
+      border: 1px solid #F23030;
     }
 
     .icon-log {
