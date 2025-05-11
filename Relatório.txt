@@ -28,3 +28,26 @@ Criado a Pasta "php_functs" para arquivos php a qual nÃ£o sÃ£o diretamente telas
 Adicionado um arquivo php "button_login.php" que checa se o usuÃ¡rio jÃ¡ foi logado, inicialmente ele retorna true ou falso, 
 mais para frente terÃ¡ a funÃ§Ã£o real de devolver tambÃ©m o design do botÃ£o dependendo do resultado
 
+09/05 - Felipe:
+Desenvolvido o tráfego do php do home:
+Todo início de tela, ele vai incluir as funções dentro da pasta php_functs, arquivo botton_login.php, para obter dados e tags para o botão login e logout dependendo da situação do usuário
+
+Adicionado o envio de telas do header a qual o ícone de casa leva ao index.php, ícone de grupo de pessoas leva ao about.php, botão de login leva para o login.php, botão de logout para o logout.php, botão de conversar com a isa para o php_functs/go_to_Chat_or_Login.php, onde vai ser decidido em relação ao login atual do usuário
+
+10/05 - Felipe:
+Desenvolvido a navegação da tela de login (login.php) para a criação de conta (account.php) a partir do link integrado ao texto "Cadastrar" na tela de login
+
+11/05 - Felipe:
+Salvo a primeira versão do banco de dados isa que irá ser armazenado as informações de todos os usuários já registrados.
+
+Código usado para a criação do banco:
+CREATE TABLE cliente(
+
+ id int AUTO_INCREMENT,
+ nome varchar(200) unique not null,
+ email varchar(150) UNIQUE not null,
+ senha varchar(20) not null,     	
+ primary key(id)
+);
+
+
