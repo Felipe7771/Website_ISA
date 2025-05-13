@@ -16,7 +16,7 @@ $buttom = Define_button_log($response);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bem-Vindo</title>
-  <link href='css/style_home.css' rel='stylesheet'>
+  <link href='css/style.css' rel='stylesheet'>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" href="img/icon_nav.png">
@@ -41,15 +41,24 @@ $buttom = Define_button_log($response);
     <section class="black-panel">
 
         <h1 class= "h1">LOGIN</h1>
-        <form onsubmit="return validarLogin()">
+
+        <!-- ENVIO DAS INFORMAÇÕES -->
+        <form method='POST' action='php_functs/try_login.php'>
           <div class='group'>
             <p class='pfor'>NOME OU E-MAIL</p>
-            <input class='input' type="text" id="usuario" placeholder="Usuário" required>
+
+            <!--                           nome de indenficação do nome ou email para o php -->
+            <input class='input' type="text" id="usuario" name='usuario' placeholder="Usuário" required>
             <p class='pfor'>SENHA</p>
-            <input class='input' type="password" id="senha" placeholder="Senha" required>
+
+            <!--                           nome de indenficação da senha para o php -->
+            <input class='input' type="password" id="senha" name='senha' placeholder="Senha" required>
+
+                                               <!-- botão para caso o usuário não tenha conta -->
             <p class='pfor'>Não tem uma conta? <a href="account.php"><u><i>Cadastrar</i></u></a></p>
             <br>
             <!--  Aqui vai ficar a mensagem de erro  -->
+            <?php if(isset($_SESSION['Erro']) && $_SESSION['Erro']){ echo "<p class='perro'>".$_SESSION['Message_erro']."</p>"; }?>
             <br>
             <button class= "buttonform" type="submit">Entrar</button>
           </div>

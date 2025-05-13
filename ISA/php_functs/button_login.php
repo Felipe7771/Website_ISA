@@ -1,18 +1,11 @@
 <?php
 function Check_login(){
     # checagem se a variável IsLogin existe e é verdadeira
-    if( isset($_SESSION['IsLogin']) ) {
+    if( isset($_SESSION['IsLogin']) && $_SESSION['IsLogin'] ) {
 
-        # checagem se a variável é verdadeira
-        if ($_SESSION['IsLogin']){
-            # significa que o usuário está logado
-            # mudar botão para LOGOUT
-            return true;
-        }else{
-
-            # significa que o usuário não está logado
-            return false;
-        }
+        # significa que o usuário está logado
+        # mudar botão para LOGOUT
+        return true;
         
     } else {
         # significa que o usuário não está logado
