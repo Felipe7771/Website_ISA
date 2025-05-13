@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 include 'php_functs/button_login.php';
 
 # checagem se o usuário está logado

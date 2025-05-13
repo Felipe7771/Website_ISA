@@ -1,14 +1,12 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 include 'php_functs/button_login.php';
-
 # checagem se o usuário está logado
 $response = Check_login();
 
 # pegar formato do botão a partir da resposta do $response
 $buttom = Define_button_log($response);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -46,13 +44,12 @@ $buttom = Define_button_log($response);
         <form method='POST' action='php_functs/try_login.php'>
           <div class='group'>
             <p class='pfor'>NOME OU E-MAIL</p>
-
             <!--                           nome de indenficação do nome ou email para o php -->
-            <input class='input' type="text" id="usuario" name='usuario' placeholder="Usuário" required>
+            <input class='input' type="text" id="usuario" name='usuario' placeholder="Usuário" value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user'];}?>"required>
+            
             <p class='pfor'>SENHA</p>
-
             <!--                           nome de indenficação da senha para o php -->
-            <input class='input' type="password" id="senha" name='senha' placeholder="Senha" required>
+            <input class='input' type="password" id="senha" name='senha' placeholder="Senha" value="<?php if(isset($_SESSION['password'])){ echo $_SESSION['password'];}?>" required>
 
                                                <!-- botão para caso o usuário não tenha conta -->
             <p class='pfor'>Não tem uma conta? <a href="account.php"><u><i>Cadastrar</i></u></a></p>

@@ -69,10 +69,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 # função de encerramento quando o código gera erro
 function error_case($message_erro){
-
         # ESTRUTURA DE ERRO {
         $_SESSION['Erro'] = True; // estado de erro
         $_SESSION['Message_erro'] = $message_erro;
+        # retornar texto escrito pelo usuário á tela
+        $_SESSION['user'] = $GLOBALS['usuario'];
+        $_SESSION['password'] = $GLOBALS['senha'];
         # }
 
         header('Location: ../login.php');
