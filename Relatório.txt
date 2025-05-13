@@ -50,4 +50,16 @@ CREATE TABLE cliente(
  primary key(id)
 );
 
+13/05 - Felipe:
+Alterado o banco de dados para que o campo de email possa ter mais de uma conta
+
+CREATE TABLE cliente(
+
+  id int AUTO_INCREMENT,
+  nome varchar(200) unique not null,
+  email varchar(150) not null,
+  senha varchar(20) not null,     	
+  primary key(id)
+);
+
 

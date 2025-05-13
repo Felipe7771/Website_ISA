@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 11/05/2025 às 18:39
+-- Tempo de geração: 13/05/2025 às 18:59
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -45,8 +45,7 @@ CREATE TABLE `cliente` (
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nome` (`nome`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `nome` (`nome`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
