@@ -41,7 +41,8 @@ $buttom = Define_button_log($response);
     <section class="black-panel">
 
         <h1 class= "h1">CRIAR CONTA</h1>
-        <form onsubmit="return validarLogin()">
+        <!-- Como eu chamo o create_account? já que chamar diretamente ele vai trocar de tela... -->
+        <form onsubmit="return validarLogin()"> 
           <div class='group'>
             <p class='pfor'>NOME</p>
             <input class='input' type="text" id="n_usuario" placeholder="Usuário" required>
