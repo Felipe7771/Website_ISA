@@ -9,7 +9,7 @@ $senha = $_POST["n_senha"] ?? '';
 
 // Verifica se o campo usuário está vazio
 if (empty($usuario)) {
-    echo "<script>alert('O campo usuário deve ser preenchido'); window.location.href='cadastro.html';</script>";
+    echo "<script>alert('O campo usuário deve ser preenchido'); window.location.href='../account.html';</script>";
     exit;
 }
 
@@ -19,7 +19,7 @@ $stmt->bindParam(':usuario', $usuario);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-    echo "<script>alert('Esse usuário já existe'); window.location.href='cadastro.html';</script>";
+    echo "<script>alert('Esse usuário já existe'); window.location.href='../account.html';</script>";
     exit;
 }
 
@@ -30,7 +30,7 @@ $stmt->bindParam(':email', $email);
 $stmt->bindParam(':senha', $senha);
 
 if ($stmt->execute()) {
-    echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='chat.php';</script>";
+    echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='../chat.php';</script>";
 } else {
     echo "<script>alert('Não foi possível cadastrar esse usuário'); window.location.href='create_account.php';</script>";
 }

@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(!($result)){
 
         # USUÁRIO NÃO ENCONTRADO
-        error_case("Usuário ou senha incorreta");
+        echo "<script>alert('Usuário ou senha incorreta'); window.location.href='../login.html';</script>";
     }
 
     #como o resultado (principalmente email) possa ter vários resultados, temos que checá-los
@@ -57,28 +57,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         } else{
 
             # SENHA INCORRETA
-            error_case("Usuário ou senha incorreta");
+             echo "<script>alert('Usuário ou senha incorreta'); window.location.href='../login.html';</script>";
         }
     }
 
     } catch(PDOException $e){
-        error_case("Erro ao consultar o servidor. Tente mais tarde");
+         echo "<script>alert('Erro ao consultar o servidor. Tente mais tarde'); window.location.href='../login.html';</script>";
     }
 
-}
-
-# função de encerramento quando o código gera erro
-function error_case($message_erro){
-        # ESTRUTURA DE ERRO {
-        $_SESSION['Erro'] = True; // estado de erro
-        $_SESSION['Message_erro'] = $message_erro;
-        # retornar texto escrito pelo usuário á tela
-        $_SESSION['user'] = $GLOBALS['usuario'];
-        $_SESSION['password'] = $GLOBALS['senha'];
-        # }
-
-        header('Location: ../login.php');
-        exit();
 }
 
 ?>

@@ -41,21 +41,19 @@ $buttom = Define_button_log($response);
     <section class="black-panel">
 
         <h1 class= "h1">CRIAR CONTA</h1>
-        <!-- Como eu chamo o create_account? já que chamar diretamente ele vai trocar de tela... -->
-        <form onsubmit="return validarLogin()"> 
-          <div class='group'>
-            <p class='pfor'>NOME</p>
-            <input class='input' type="text" id="n_usuario" placeholder="Usuário" required>
-            <p class='pfor'>E-MAIL</p>
-            <input class='input' type="text" id="n_e-mail" placeholder="E-mail" required>
-            <p class='pfor'>SENHA</p>
-            <input class='input' type="password" id="n_senha" placeholder="Senha" required>
-            <br>
-            <!--  Aqui vai ficar a mensagem de erro  -->
-            <br>
-            <button class= "buttonform" type="submit">Entrar</button>
-          </div>
-        </form>
+        <form action="php_functs\create_account.php" method="POST">
+  <div class='group'>
+    <p class='pfor'>NOME</p>
+    <input class='input' type="text" id="n_usuario" name="n_usuario" placeholder="Usuário" required>
+    <p class='pfor'>E-MAIL</p>
+    <input class='input' type="text" id="n_e-mail" name="n_e-mail" placeholder="E-mail" required>
+    <p class='pfor'>SENHA</p>
+    <input class='input' type="password" id="n_senha" name="n_senha" placeholder="Senha" required>
+    <br><br>
+    <button class="buttonform" type="submit">Entrar</button>
+  </div>
+</form>
+
 
     </section>
   </main>

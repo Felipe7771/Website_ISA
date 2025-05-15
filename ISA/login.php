@@ -45,17 +45,16 @@ $buttom = Define_button_log($response);
           <div class='group'>
             <p class='pfor'>NOME OU E-MAIL</p>
             <!--                           nome de indenficação do nome ou email para o php -->
-            <input class='input' type="text" id="usuario" name='usuario' placeholder="Usuário" value="<?php if(isset($_SESSION['user'])){ echo $_SESSION['user'];}?>"required>
+            <input class='input' type="text" id="usuario" name='usuario' placeholder="Usuário" required>
             
             <p class='pfor'>SENHA</p>
             <!--                           nome de indenficação da senha para o php -->
-            <input class='input' type="password" id="senha" name='senha' placeholder="Senha" value="<?php if(isset($_SESSION['password'])){ echo $_SESSION['password'];}?>" required>
+            <input class='input' type="password" id="senha" name='senha' placeholder="Senha" required>
 
                                                <!-- botão para caso o usuário não tenha conta -->
             <p class='pfor'>Não tem uma conta? <a href="account.php"><u><i>Cadastrar</i></u></a></p>
             <br>
             <!--  Aqui vai ficar a mensagem de erro  -->
-            <?php if(isset($_SESSION['Erro']) && $_SESSION['Erro']){ echo "<p class='perro'>".$_SESSION['Message_erro']."</p>"; }?>
             <br>
             <button class= "buttonform" type="submit">Entrar</button>
           </div>
